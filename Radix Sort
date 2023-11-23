@@ -1,0 +1,44 @@
+#include <bits/stdc++.h> 
+vector<int> radixSort(int n, vector<int>& a) {
+    // Write your code here.
+    vector<int>v(n),p(n);
+    p=a;
+   
+   int k=0,t=10;
+   bool f=0;
+    while(true){
+        k=0;
+     for(int i=0;i<10;i++)
+     {
+         for(int j=0;j<n;j++)
+         {
+             if(p[j]%10==i)
+             {
+               v[k++]=a[j];
+             }
+             
+         }
+     }
+     
+     f=0;
+     for(int i=0;i<n;i++)
+     {
+         p[i]=v[i];
+         a[i]=v[i];
+         //cout<<v[i]<<" ";
+         p[i]/=t;
+         if(p[i])
+         {
+             f=1;
+         }
+     }
+     //cout<<"\n";
+     if(!f)
+     {
+         break;
+     }
+     t*=10;
+     
+    }
+    return v;
+}
